@@ -5,43 +5,40 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 40% 13%;
+    --foreground: 220 40% 10%;
+    /* Darker for better contrast */
 
     --card: 0 0% 100%;
-    --card-foreground: 220 40% 13%;
+    --card-foreground: 220 40% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 40% 13%;
+    --popover-foreground: 220 40% 10%;
 
-    --primary: 220 40% 13%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 220 40% 12%;
+    /* Deep Navy */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 40% 13%;
+    --secondary: 40 10% 97%;
+    /* Lighter, warmer beige */
+    --secondary-foreground: 220 40% 12%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 8% 46%;
+    /* Slightly more neutral */
 
-    --accent: 35 25% 65%;
-    --accent-foreground: 220 40% 13%;
+    --accent: 38 45% 55%;
+    /* Refined Gold/Bronze - less saturated */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
+    --border: 220 10% 92%;
+    /* Lighter border */
+    --input: 220 10% 92%;
     --ring: 220 40% 13%;
 
     --radius: 0.25rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -50,10 +47,15 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground tracking-wide antialiased;
-    font-family: 'Noto Sans Arabic', 'Georgia', serif;
-    line-height: 1.7;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
   }
 
   h1,
@@ -62,8 +64,13 @@
   h4,
   h5,
   h6 {
-    font-family: 'Noto Serif Arabic', 'Georgia', serif;
-    @apply tracking-tight;
+    font-family: 'Noto Serif Arabic', serif;
+    @apply tracking-tight text-primary;
+  }
+
+  /* Premium Selection */
+  ::selection {
+    @apply bg-accent/20 text-primary;
   }
 
   /* RTL Support */
@@ -84,13 +91,17 @@
 
 @layer utilities {
   .transition-colors-only {
-    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(20px);
     }
 
     to {
@@ -100,6 +111,6 @@
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 0.7s ease-out forwards;
+    animation: fade-in-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
 }

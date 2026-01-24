@@ -30,80 +30,113 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-24 bg-background border-b border-border/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-6 tracking-tight">
+    <section id="team" className="py-24 bg-secondary/20 relative border-b border-border/30">
+      {/* Top subtle fade */}
+      <div className="absolute top-0 inset-x-0 h-12 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center mb-24">
+          <p className="text-[10px] font-bold text-accent uppercase tracking-[0.2em] mb-6 flex items-center justify-center gap-3">
+            <span className="w-8 h-px bg-accent/40"></span>
+            {t('team.subtitle') || 'Our Experts'}
+            <span className="w-8 h-px bg-accent/40"></span>
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-primary mb-0 tracking-tight">
             {t('team.title')}
           </h2>
-          <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-24">
-          {/* Owners */}
+        <div className="max-w-7xl mx-auto space-y-32">
+          {/* Owners - Dominant, Central */}
           <div>
-            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em] text-center mb-12">
-              {t('team.owners')}
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-10">
+            <div className="text-center mb-16">
+              <h3 className="inline-block text-xs font-bold text-primary uppercase tracking-[0.3em] border-b border-primary/20 pb-3 px-8">
+                {t('team.owners')}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
               {owners.map((owner, index) => (
-                <div key={index} className="p-10 bg-white border-none text-center rounded-sm shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                  {owner.image && (
-                    <div className="mb-8 overflow-hidden rounded-sm aspect-[3/4] max-w-[200px] mx-auto">
+                <div key={index} className="group relative flex flex-col items-center">
+                  <div className="mb-8 overflow-hidden rounded-sm aspect-[3/4] w-full max-w-[340px] bg-background shadow-xl group-hover:shadow-2xl transition-all duration-700 relative">
+                    <div className="absolute inset-4 border border-primary/5 z-20 pointer-events-none"></div>
+
+                    {owner.image ? (
                       <img
                         src={owner.image}
                         alt={t(owner.nameKey)}
-                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000 ease-out"
                       />
-                    </div>
-                  )}
-                  <p className="font-serif font-bold text-primary text-2xl mb-3 tracking-tight">{t(owner.nameKey)}</p>
-                  <p className="text-xs font-bold text-accent uppercase tracking-widest">{t(owner.titleKey)}</p>
+                    ) : (
+                      <div className="w-full h-full bg-secondary/50 flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary to-transparent"></div>
+                        <span className="font-serif text-7xl text-primary/10 italic">TLF</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-center">
+                    <p className="font-serif font-semibold text-primary text-3xl mb-3 tracking-tight">{t(owner.nameKey)}</p>
+                    <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">{t(owner.titleKey)}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Working Partner */}
+          {/* Working Partner - Distinct */}
           <div>
-            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em] text-center mb-12">
-              {t('team.partner')}
-            </h3>
-            <div className="max-w-xl mx-auto p-10 bg-white border-none text-center rounded-sm shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-              {partner.image && (
-                <div className="mb-8 overflow-hidden rounded-sm aspect-[3/4] max-w-[200px] mx-auto">
+            <div className="text-center mb-12">
+              <h3 className="inline-block text-xs font-bold text-muted-foreground uppercase tracking-[0.25em] pb-2 opacity-80">
+                {t('team.partner')}
+              </h3>
+            </div>
+            <div className="max-w-xs mx-auto group relative flex flex-col items-center">
+              <div className="mb-6 overflow-hidden rounded-sm aspect-[3/4] w-full max-w-[260px] bg-background shadow-lg group-hover:shadow-xl transition-all duration-700 relative">
+                <div className="absolute inset-3 border border-primary/5 z-20 pointer-events-none"></div>
+
+                {partner.image ? (
                   <img
                     src={partner.image}
                     alt={t(partner.nameKey)}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
                   />
-                </div>
-              )}
-              <p className="font-serif font-bold text-primary text-2xl mb-3 tracking-tight">{t(partner.nameKey)}</p>
-              <p className="text-xs font-bold text-accent uppercase tracking-widest">{t(partner.titleKey)}</p>
+                ) : (
+                  <div className="w-full h-full bg-secondary/40 flex items-center justify-center relative">
+                    <span className="font-serif text-5xl text-primary/10 italic">TLF</span>
+                  </div>
+                )}
+              </div>
+              <div className="text-center">
+                <p className="font-serif font-medium text-primary text-2xl mb-2 tracking-wide">{t(partner.nameKey)}</p>
+                <p className="text-[10px] font-bold text-accent/90 uppercase tracking-[0.15em]">{t(partner.titleKey)}</p>
+              </div>
             </div>
           </div>
 
-          <div className="pt-20 border-t border-border/40 space-y-20">
-            {/* Legal Consultants */}
-            <div>
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest text-center mb-10">
+          <div className="pt-24 border-t border-primary/5">
+            {/* Legal Consultants - Professional Grid */}
+            <div className="mb-24">
+              <h3 className="text-[10px] font-bold text-muted-foreground/60 uppercase tracking-[0.2em] text-center mb-12">
                 {t('team.consultants')}
               </h3>
-              <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 max-w-5xl mx-auto">
                 {consultants.map((consultant, index) => (
-                  <div key={index} className="p-8 bg-white border border-transparent hover:border-accent/20 rounded-sm text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-500">
-                    {consultant.image && (
-                      <div className="mb-6 overflow-hidden rounded-sm aspect-[3/4] max-w-[140px] mx-auto shadow-sm">
+                  <div key={index} className="group flex flex-col items-center text-center p-6 hover:bg-background/80 rounded-sm transition-all duration-500 hover:shadow-sm border border-transparent hover:border-border/40">
+                    <div className="mb-5 overflow-hidden rounded-full w-24 h-24 mx-auto border border-border/60 group-hover:border-accent/40 transition-colors shadow-sm bg-background relative">
+                      {consultant.image ? (
                         <img
                           src={consultant.image}
                           alt={t(consultant.nameKey)}
-                          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                         />
-                      </div>
-                    )}
-                    <p className="font-bold text-primary mb-2 text-lg tracking-tight">{t(consultant.nameKey)}</p>
-                    <p className="text-xs font-bold text-accent uppercase tracking-widest">
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-secondary/10">
+                          <span className="font-serif text-lg text-muted-foreground/20">TLF</span>
+                        </div>
+                      )}
+                    </div>
+                    <p className="font-serif font-medium text-primary mb-1 text-lg tracking-tight">{t(consultant.nameKey)}</p>
+                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest group-hover:text-accent transition-colors">
                       {t(consultant.titleKey)}
                     </p>
                   </div>
@@ -111,38 +144,24 @@ const Team = () => {
               </div>
             </div>
 
-            {/* Lawyer Assistants */}
+            {/* Lawyer Assistants - Minimal */}
             <div>
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest text-center mb-10">
+              <h3 className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.2em] text-center mb-10">
                 {t('team.assistants')}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
                 {assistants.map((assistant, index) => {
                   const isPlaceholder = assistant.nameKey === 'team.assistant';
-                  return (
-                    <div key={index} className="p-4 py-6 bg-white border border-transparent hover:border-accent/10 rounded-sm text-center flex flex-col items-center justify-start shadow-sm hover:shadow-md transition-all duration-500 min-h-[140px]">
-                      {assistant.image ? (
-                        <div className="mb-3 overflow-hidden rounded-full w-16 h-16 border border-border/50 mx-auto">
-                          <img
-                            src={assistant.image}
-                            alt={t(assistant.nameKey)}
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                          />
-                        </div>
-                      ) : (
-                        <div className="mb-3 w-16 h-16 rounded-full bg-secondary/50 border border-border/50 mx-auto flex items-center justify-center">
-                          <span className="text-muted-foreground/30 text-xs uppercase font-bold">TBA</span>
-                        </div>
-                      )}
+                  if (isPlaceholder) return null;
 
-                      <p className={`text-xs ${!isPlaceholder ? 'font-bold text-primary mt-1 tracking-tight leading-tight' : 'text-muted-foreground text-opacity-80'}`}>
+                  return (
+                    <div key={index} className="py-4 px-3 rounded-sm text-center flex flex-col items-center justify-center bg-background/40 hover:bg-background border border-transparent hover:border-border/30 transition-all duration-300">
+                      <p className="text-sm font-semibold text-primary/80 mb-1 tracking-tight">
                         {t(assistant.nameKey)}
                       </p>
-                      {!isPlaceholder && (
-                        <p className="text-[10px] font-bold text-accent uppercase tracking-widest mt-1.5 opacity-80">
-                          {t(assistant.titleKey)}
-                        </p>
-                      )}
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider opacity-60">
+                        {t(assistant.titleKey)}
+                      </p>
                     </div>
                   );
                 })}
