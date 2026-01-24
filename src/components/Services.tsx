@@ -48,6 +48,11 @@ const Services = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-primary mb-6 tracking-tight">
             {t('services.title')}
           </h2>
+          <p className="text-muted-foreground text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            {language === 'ar'
+              ? 'نقدم حلولاً قانونية شاملة مصممة خصيصاً لتلبية احتياجات عملائنا بأعلى معايير المهنية والاحترافية.'
+              : 'Providing comprehensive legal solutions tailored to your specific needs with the highest standards of professionalism.'}
+          </p>
         </div>
 
         {/* Discrete Cards Grid */}
@@ -55,28 +60,28 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative p-10 rounded-xl bg-background border border-border/10 hover:border-transparent hover:bg-secondary/40 hover:shadow-md transition-all duration-500 ease-out flex flex-col items-start h-full"
+              className="group relative p-8 sm:p-10 rounded-sm bg-background border border-border/40 hover:border-accent/30 hover:bg-secondary/20 hover:shadow-lg transition-all duration-500 ease-out flex flex-col items-start h-full"
             >
               {/* Icon Container */}
-              <div className="mb-8 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
-                <service.icon className="h-5 w-5 stroke-[1.5]" />
+              <div className="mb-8 w-14 h-14 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                <service.icon className="h-6 w-6 stroke-[1.5]" />
               </div>
 
-              <h3 className="text-xl font-serif font-semibold text-primary mb-4 tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-serif font-medium text-primary mb-4 tracking-tight group-hover:text-accent transition-colors duration-300">
                 {t(service.titleKey)}
               </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed font-light mb-10 max-w-sm">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-light mb-10 max-w-sm">
                 {t(service.descKey)}
               </p>
 
               {/* Text Link CTA */}
               <Link
                 to={getServiceLink(service.link)}
-                className="mt-auto inline-flex items-center gap-2 text-[11px] font-bold text-primary/70 uppercase tracking-[0.15em] group-hover:text-accent transition-colors duration-300"
+                className="mt-auto inline-flex items-center gap-3 text-xs font-bold text-primary uppercase tracking-[0.2em] group-hover:text-accent transition-colors duration-300 border-b border-transparent group-hover:border-accent/30 pb-1"
               >
-                <span>{t('services.learn_more') || 'Learn More'}</span>
-                <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+                <span>{t('services.learn_more') || 'Experience'}</span>
+                <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </Link>
             </div>
           ))}

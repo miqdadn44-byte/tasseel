@@ -46,7 +46,7 @@ const Team = () => {
           </h2>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-32">
+        <div className="max-w-7xl mx-auto space-y-24">
           {/* Owners - Dominant, Central */}
           <div>
             <div className="text-center mb-16">
@@ -61,6 +61,7 @@ const Team = () => {
                   <div className="mb-8 overflow-hidden rounded-sm aspect-[3/4] w-full max-w-[340px] bg-background shadow-xl group-hover:shadow-2xl transition-all duration-700 relative">
                     <div className="absolute inset-4 border border-primary/5 z-20 pointer-events-none"></div>
 
+                    {/* Placeholder Logic Updated for Premium matching */}
                     {owner.image ? (
                       <img
                         src={owner.image}
@@ -68,9 +69,9 @@ const Team = () => {
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000 ease-out"
                       />
                     ) : (
-                      <div className="w-full h-full bg-secondary/50 flex items-center justify-center relative overflow-hidden">
-                        <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary to-transparent"></div>
-                        <span className="font-serif text-7xl text-primary/10 italic">TLF</span>
+                      <div className="w-full h-full bg-secondary/30 flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary to-transparent"></div>
+                        <span className="font-serif text-6xl text-primary/5">TLF</span>
                       </div>
                     )}
                   </div>
@@ -122,7 +123,7 @@ const Team = () => {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 max-w-5xl mx-auto">
                 {consultants.map((consultant, index) => (
                   <div key={index} className="group flex flex-col items-center text-center p-6 hover:bg-background/80 rounded-sm transition-all duration-500 hover:shadow-sm border border-transparent hover:border-border/40">
-                    <div className="mb-5 overflow-hidden rounded-full w-24 h-24 mx-auto border border-border/60 group-hover:border-accent/40 transition-colors shadow-sm bg-background relative">
+                    <div className="mb-5 overflow-hidden rounded-full w-28 h-28 mx-auto border border-border/60 group-hover:border-accent/40 transition-colors shadow-sm bg-background relative flex items-center justify-center">
                       {consultant.image ? (
                         <img
                           src={consultant.image}
@@ -130,13 +131,11 @@ const Team = () => {
                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-secondary/10">
-                          <span className="font-serif text-lg text-muted-foreground/20">TLF</span>
-                        </div>
+                        <span className="font-serif text-xl text-primary/10">TLF</span>
                       )}
                     </div>
                     <p className="font-serif font-medium text-primary mb-1 text-lg tracking-tight">{t(consultant.nameKey)}</p>
-                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest group-hover:text-accent transition-colors">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest group-hover:text-accent transition-colors">
                       {t(consultant.titleKey)}
                     </p>
                   </div>

@@ -8,11 +8,11 @@ const Hero = () => {
 
   return (
 
-    <section id="home" className="min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary/40 via-background to-background pt-32 pb-20 px-4 border-b border-border/40 relative overflow-hidden">
+    <section id="home" className="min-h-[100dvh] flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary/40 via-background to-background pt-28 pb-16 sm:pt-32 sm:pb-20 px-4 border-b border-border/40 relative overflow-hidden">
       {/* Subtle Texture Overlay */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.015] pointer-events-none mix-blend-multiply"></div>
 
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="container mx-auto px-6 sm:px-6 lg:px-12 max-w-5xl relative z-10">
         <div className="text-center max-w-4xl mx-auto">
 
           {/* Badge */}
@@ -24,7 +24,7 @@ const Hero = () => {
           </div>
 
           {/* H1 */}
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-serif font-bold text-primary mb-6 leading-[1.1] tracking-tight">
+          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-serif font-bold text-primary mb-6 leading-[1.1] tracking-tight">
             {t('hero.title')}
           </h1>
 
@@ -37,16 +37,33 @@ const Hero = () => {
           </h2>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed font-light text-balance">
+          <p className="text-base sm:text-lg text-muted-foreground/80 mb-12 max-w-2xl mx-auto leading-loose font-light text-balance">
             {t('hero.description')}
           </p>
 
+          {/* Trust Cue - Row */}
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-16 text-[10px] sm:text-xs font-bold text-muted-foreground/60 uppercase tracking-[0.2em]">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 border border-primary/5 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+              {language === 'ar' ? 'تأسست ٢٠٠٩' : 'EST. 2009'}
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 border border-primary/5 backdrop-blur-sm">
+              <Lock className="h-3 w-3" />
+              {t('hero.confidential')}
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 border border-primary/5 backdrop-blur-sm">
+              <span className="text-primary">{language === 'ar' ? 'الكويت' : 'KUWAIT'}</span>
+            </div>
+          </div>
+
+
+
           {/* CTAs */}
           <div className="flex flex-col items-center gap-10 mb-20">
-            <div className="flex flex-row items-center justify-center gap-6 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 h-12 text-base rounded-sm shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5 min-w-[140px] sm:min-w-[160px]"
+                className="bg-primary hover:bg-primary/95 text-primary-foreground font-semibold px-10 h-14 text-sm tracking-widest uppercase rounded-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 w-full sm:w-auto min-w-[180px]"
                 asChild
               >
                 <a href="#contact">
@@ -54,19 +71,16 @@ const Hero = () => {
                 </a>
               </Button>
 
-              <a 
-                href="#services" 
-                className="text-accent font-medium text-sm sm:text-base hover:text-accent/80 transition-colors inline-flex items-center gap-2 group whitespace-nowrap"
+              <a
+                href="#services"
+                className="text-primary/80 font-semibold text-sm hover:text-primary transition-colors inline-flex items-center gap-3 group whitespace-nowrap tracking-wider uppercase border-b border-transparent hover:border-primary/20 pb-0.5"
               >
                 {t('hero.secondary_cta')}
-                <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+                <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </a>
             </div>
 
-            {/* Trust Cue */}
-            <div className="flex items-center gap-2 text-[10px] text-muted-foreground/60 font-semibold uppercase tracking-widest backdrop-blur-sm px-4 py-1 rounded-full border border-border/40">
-              <Lock className="h-3 w-3" /> {t('hero.confidential')}
-            </div>
+
           </div>
 
           {/* Footer of Hero */}

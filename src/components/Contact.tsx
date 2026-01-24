@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Lock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -155,14 +155,21 @@ const Contact = () => {
                 </div>
               </div>
 
-              <Button
-                type="submit"
-                className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-base shadow-md mt-4 tracking-[0.2em] uppercase rounded-sm border border-transparent hover:border-primary/20 transition-all hover:translate-y-px"
-                disabled={!formData.name || !formData.email || !formData.message}
-              >
-                {t('contact.submit')}
-                <Send className="h-3.5 w-3.5 ms-4 rtl:rotate-180 opacity-70" />
-              </Button>
+              <div className="space-y-4">
+                <Button
+                  type="submit"
+                  className="w-full h-14 bg-primary hover:bg-primary/95 text-primary-foreground font-semibold text-sm shadow-lg mt-2 tracking-[0.2em] uppercase rounded-sm border border-transparent hover:border-primary/20 transition-all hover:-translate-y-0.5"
+                  disabled={!formData.name || !formData.email || !formData.message}
+                >
+                  {t('contact.submit')}
+                  <Send className="h-3.5 w-3.5 ms-4 rtl:rotate-180 opacity-70" />
+                </Button>
+
+                <p className="text-[10px] text-center text-muted-foreground/50 flex items-center justify-center gap-1.5 uppercase tracking-widest font-medium">
+                  <Lock className="h-3 w-3" />
+                  {language === 'ar' ? 'جميع المراسلات سرية تماماً' : 'All communications are strictly confidential'}
+                </p>
+              </div>
             </form>
           </div>
         </div>

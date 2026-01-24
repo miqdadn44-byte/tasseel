@@ -3,8 +3,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import logoAr from '@/assets/logo-ar.png';
-import logoEn from '@/assets/logo-en.png';
+import logo from '@/assets/logo.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +15,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isServicesOpen, setIsServicesOpen] = useState(false); // Controlled state for dropdown
+  const [isServicesOpen, setIsServicesOpen] = useState(false); // Controlled state for deskop dropdown
+  const [isMobileServicesExpanded, setIsMobileServicesExpanded] = useState(false); // Controlled state for mobile accordion
 
   const { language, toggleLanguage, t } = useLanguage();
   const location = useLocation();
@@ -42,8 +42,8 @@ const Header = () => {
           }
         }
       } else {
-        // If not home, maybe highlight services if on service page
-        if (location.pathname.startsWith('/services/')) {
+        // If not home, highlighted services if on service page (English or Arabic)
+        if (location.pathname.startsWith('/services/') || location.pathname.startsWith('/ar/services/')) {
           setActiveSection('services');
         } else {
           setActiveSection('');
@@ -93,10 +93,10 @@ const Header = () => {
   };
 
   const serviceLinks = [
-    { key: 'labor', href: '/services/labor-law', labelEn: 'Labor Law', labelAr: 'قانون العمل' },
-    { key: 'civil', href: '/services/civil-litigation', labelEn: 'Civil Litigation', labelAr: 'القضايا المدنية' },
-    { key: 'family', href: '/services/family-law', labelEn: 'Family Law', labelAr: 'قضايا الأسرة' },
-    { key: 'criminal', href: '/services/criminal-defense', labelEn: 'Criminal Defense', labelAr: 'الدفاع الجنائي' },
+    { key: 'labor', slug: 'labor-law', labelEn: 'Labor Law', labelAr: 'قانون العمل' },
+    { key: 'civil', slug: 'civil-litigation', labelEn: 'Civil Litigation', labelAr: 'القضايا المدنية' },
+    { key: 'family', slug: 'family-law', labelEn: 'Family Law', labelAr: 'قضايا الأسرة' },
+    { key: 'criminal', slug: 'criminal-defense', labelEn: 'Criminal Defense', labelAr: 'الدفاع الجنائي' },
   ];
 
   const mainNavItems = [
@@ -117,12 +117,23 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="block group relative z-50" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <Link to="/" className="block group relative z-50 flex items-center gap-3 sm:gap-4" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img
-              src={language === 'ar' ? logoAr : logoEn}
-              alt={language === 'ar' ? 'شعار تأصيل' : 'Tasseel Logo'}
-              className={`w-auto object-contain transition-all duration-500 ${isScrolled || location.pathname !== '/' ? 'h-12 sm:h-16 lg:h-20' : 'h-16 sm:h-24 lg:h-32'}`}
+              src={logo}
+              alt="Tasseel Logo"
+              className={`w-auto object-contain transition-all duration-500 ${isScrolled || location.pathname !== '/' ? 'h-10 sm:h-12 lg:h-14' : 'h-14 sm:h-20 lg:h-24'}`}
             />
+            <div className={`flex flex-col justify-center transition-all duration-500 ${isScrolled || location.pathname !== '/' ? 'scale-95' : 'scale-100'}`}>
+              <span
+                className={`font-serif font-bold text-primary leading-none transition-all duration-500 ${isScrolled || location.pathname !== '/'
+                  ? 'text-2xl sm:text-3xl lg:text-3xl'
+                  : 'text-3xl sm:text-4xl lg:text-5xl'
+                  }`}
+                style={{ letterSpacing: language === 'ar' ? '0' : '0.15em' }}
+              >
+                {language === 'ar' ? 'تأصيل' : 'TASSEEL'}
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -148,12 +159,12 @@ const Header = () => {
 
               if (item.isDropdown && item.key === 'services') {
                 return (
-                  <div key={item.key} className="flex items-center gap-1">
-                    {/* Static Label (Link to Service Overview if preferred, currently just label or scroll to #services) */}
+                  <div key={item.key} className="flex items-center gap-1.5 relative group">
+                    {/* Main Link - Navigates to Services Page */}
                     <a
                       href="#services"
                       onClick={(e) => handleNavClick(e, '#services')}
-                      className={`text-sm font-medium tracking-widest transition-all duration-300 relative py-2 cursor-pointer ${activeSection === 'services'
+                      className={`text-sm font-medium tracking-widest transition-colors duration-300 relative py-2 cursor-pointer ${activeSection === 'services'
                         ? 'text-primary'
                         : 'text-muted-foreground hover:text-primary'
                         }`}
@@ -163,7 +174,7 @@ const Header = () => {
                       <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent transition-all duration-500 ${activeSection === 'services' ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`} />
                     </a>
 
-                    {/* Dropdown Menu - Trigger is ONLY click on arrow */}
+                    {/* Independent Dropdown Trigger */}
                     <DropdownMenu
                       key={item.key}
                       dir={isRTL ? "rtl" : "ltr"}
@@ -172,26 +183,52 @@ const Header = () => {
                     >
                       <DropdownMenuTrigger asChild>
                         <button
-                          className={`p-1 text-muted-foreground hover:text-primary transition-colors outline-none focus:text-primary ${isServicesOpen ? 'text-primary' : ''}`}
+                          className={`p-1.5 text-muted-foreground/60 hover:text-primary transition-colors outline-none focus:text-primary ${isServicesOpen ? 'text-primary' : ''}`}
                           aria-label="Toggle Services Menu"
                           aria-expanded={isServicesOpen}
                         >
                           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
                         </button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align={isRTL ? "end" : "start"} className="w-56 bg-background/95 backdrop-blur-xl border-border/50">
-                        {serviceLinks.map((service) => (
-                          <DropdownMenuItem key={service.key} asChild>
-                            <Link
-                              to={service.href}
-                              onClick={() => setIsServicesOpen(false)} // Explicitly close on click
-                              className="w-full cursor-pointer py-2.5 text-sm font-medium focus:bg-primary/5 focus:text-primary"
-                              style={{ fontFamily: language === 'ar' ? '"Noto Sans Arabic", sans-serif' : 'inherit' }}
-                            >
-                              {language === 'ar' ? service.labelAr : service.labelEn}
-                            </Link>
-                          </DropdownMenuItem>
-                        ))}
+
+                      {/* Premium Dropdown Content */}
+                      {/* Premium Dropdown Content */}
+                      <DropdownMenuContent
+                        align={isRTL ? "end" : "start"}
+                        sideOffset={8}
+                        className="w-64 bg-background border border-border/40 shadow-lg shadow-black/5 rounded-sm p-2 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 duration-200"
+                        onCloseAutoFocus={(e) => e.preventDefault()}
+                        onInteractOutside={() => setIsServicesOpen(false)}
+                      >
+                        {/* Muted Label */}
+                        <div className="px-4 py-3 text-[10px] font-bold text-muted-foreground/60 uppercase tracking-[0.2em] border-b border-border/40 mb-3 select-none">
+                          {language === 'ar' ? 'الخدمات القانونية' : 'LEGAL SERVICES'}
+                        </div>
+
+                        {serviceLinks.map((service) => {
+                          const servicePath = language === 'ar'
+                            ? `/ar/services/${service.slug}`
+                            : `/services/${service.slug}`;
+
+                          return (
+                            <DropdownMenuItem key={service.key} asChild className="focus:bg-transparent p-0 mb-1 last:mb-0 outline-none">
+                              <Link
+                                to={servicePath}
+                                onClick={() => setIsServicesOpen(false)}
+                                className={`group/item relative flex items-center w-full cursor-pointer py-3.5 px-4 text-sm font-medium text-primary/80 hover:text-primary transition-all duration-300 outline-none
+                                ${isRTL
+                                    ? 'border-r-2 border-r-transparent hover:border-r-accent focus:border-r-accent'
+                                    : 'border-l-2 border-l-transparent hover:border-l-accent focus:border-l-accent'
+                                  }`}
+                                style={{ fontFamily: language === 'ar' ? '"Noto Sans Arabic", sans-serif' : 'inherit' }}
+                              >
+                                <span className="transition-transform duration-300 group-hover/item:translate-x-1.5 rtl:group-hover/item:-translate-x-1.5 text-primary/70 group-hover:text-primary group-focus:text-primary">
+                                  {language === 'ar' ? service.labelAr : service.labelEn}
+                                </span>
+                              </Link>
+                            </DropdownMenuItem>
+                          );
+                        })}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
@@ -246,20 +283,38 @@ const Header = () => {
             <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-xl font-medium text-foreground/80 hover:text-primary transition-colors">{t('nav.home')}</a>
             <a href="#about" onClick={(e) => handleNavClick(e, '#about')} className="text-xl font-medium text-foreground/80 hover:text-primary transition-colors">{t('nav.about')}</a>
 
-            {/* Mobile Services Section */}
-            <div className="bg-secondary/20 rounded-xl p-4">
-              <span className="block text-primary font-bold mb-4 uppercase text-sm tracking-widest">{t('nav.services')}</span>
-              <div className="flex flex-col gap-3">
-                {serviceLinks.map((s) => (
-                  <Link
-                    key={s.key}
-                    to={s.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-lg text-foreground/70 hover:text-primary transition-colors py-1"
-                  >
-                    {language === 'ar' ? s.labelAr : s.labelEn}
-                  </Link>
-                ))}
+            {/* Mobile Services Section - Accordion */}
+            <div className="flex flex-col">
+              <button
+                onClick={() => setIsMobileServicesExpanded(!isMobileServicesExpanded)}
+                className="flex items-center justify-center gap-2 text-xl font-medium text-foreground/80 hover:text-primary transition-colors w-full"
+                aria-expanded={isMobileServicesExpanded}
+              >
+                {t('nav.services')}
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileServicesExpanded ? 'rotate-180 text-primary' : 'text-muted-foreground/50'}`} />
+              </button>
+
+              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isMobileServicesExpanded ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                <div className="flex flex-col gap-3 pb-2">
+                  {/* Optional 'View All' link if desired, or just list items. Requirement says 'simple vertical list' */}
+
+                  {serviceLinks.map((s) => {
+                    const servicePath = language === 'ar'
+                      ? `/ar/services/${s.slug}`
+                      : `/services/${s.slug}`;
+
+                    return (
+                      <Link
+                        key={s.key}
+                        to={servicePath}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-base text-muted-foreground hover:text-primary transition-colors py-1"
+                      >
+                        {language === 'ar' ? s.labelAr : s.labelEn}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 

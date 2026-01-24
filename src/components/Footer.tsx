@@ -1,8 +1,7 @@
 import { Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logoAr from '@/assets/logo-ar.png';
-import logoEn from '@/assets/logo-en.png';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   const { language, t } = useLanguage();
@@ -41,15 +40,25 @@ const Footer = () => {
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none mix-blend-multiply"></div>
 
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-20 lg:gap-12 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-20">
           {/* Brand & Social */}
           <div className="lg:col-span-2">
             <div className="mb-8 inline-block">
-              <img
-                src={language === 'ar' ? logoAr : logoEn}
-                alt={language === 'ar' ? 'شعار تأصيل' : 'Tasseel Logo'}
-                className="h-20 sm:h-24 w-auto object-contain brightness-0 invert opacity-90"
-              />
+              <Link to="/" className="flex items-center gap-3 sm:gap-4" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <img
+                  src={logo}
+                  alt="Tasseel Logo"
+                  className="h-12 sm:h-14 w-auto object-contain brightness-0 invert opacity-90"
+                />
+                <div className="flex flex-col justify-center">
+                  <span
+                    className="font-serif font-bold text-primary-foreground leading-none text-2xl sm:text-3xl"
+                    style={{ letterSpacing: language === 'ar' ? '0' : '0.15em' }}
+                  >
+                    {language === 'ar' ? 'تأصيل' : 'TASSEEL'}
+                  </span>
+                </div>
+              </Link>
             </div>
             <p className="text-primary-foreground/60 text-base leading-relaxed max-w-sm font-light mb-10">
               {t('footer.description')}
