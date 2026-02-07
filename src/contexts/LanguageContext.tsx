@@ -61,12 +61,12 @@ const translations = {
 
     'team.owner1': 'Abdullah K. Al-Foqom',
     'team.owner1.title': 'Founding Partner',
-    'team.owner2': 'Mohamed F. F. Alaazmy',
+    'team.owner2': 'Mohamed  Alaazmy',
     'team.owner2.title': 'Partner',
     'team.partner1': 'Omar Alazmi',
     'team.partner1.title': 'Working Partner',
 
-    'team.consultant1': 'Mohammed Hassan Mohammed Atta Al-Karim',
+    'team.consultant1': 'Al-Mustashar Abu Al-Hasan Muhammad',
     'team.consultant1.title': 'Legal Consultant',
 
     'team.consultant2': 'Mohamed Abdelaziz Ismail Gaballa',
@@ -76,7 +76,7 @@ const translations = {
     'team.assistant1.title': 'Lawyer Assistant',
     'team.assistant2': 'Hamouda Mostafa Mohamed Moustafa',
     'team.assistant2.title': 'Lawyer Assistant',
-    'team.assistant3': 'Eslam Diaa Lotfi Delghani Elmowfi',
+    'team.assistant3': 'Eslam Diaa Loutfi Delghani Elmowfi',
     'team.assistant3.title': 'Lawyer Assistant',
     'team.assistant4': 'Mohamed Samy Tawfik Mohamed Elsadek',
     'team.assistant4.title': 'Lawyer Assistant',
@@ -167,12 +167,12 @@ const translations = {
 
     'team.owner1': 'عبدالله خلف الفقم',
     'team.owner1.title': 'الشريك المؤسس',
-    'team.owner2': 'محمد فلاح ف. ف. العازمي',
+    'team.owner2': 'محمد فلاح   العازمي',
     'team.owner2.title': 'شريك',
     'team.partner1': 'عمر فلاح حشر الشقراء العازمي',
     'team.partner1.title': 'الشريك العامل',
 
-    'team.consultant1': 'محمد حسن محمد عطا الكريم',
+    'team.consultant1': ' المستشار ابو الحسن محمد',
     'team.consultant1.title': 'مستشار قانوني',
 
     'team.consultant2': 'محمد عبدالعزيز إسماعيل جاب الله',

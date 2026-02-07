@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -17,6 +17,20 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isServicesOpen, setIsServicesOpen] = useState(false); // Controlled state for deskop dropdown
   const [isMobileServicesExpanded, setIsMobileServicesExpanded] = useState(false); // Controlled state for mobile accordion
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200); // 200ms delay to allow moving mouse to dropdown
+  };
 
   const { language, toggleLanguage, t } = useLanguage();
   const location = useLocation();
@@ -159,7 +173,12 @@ const Header = () => {
 
               if (item.isDropdown && item.key === 'services') {
                 return (
-                  <div key={item.key} className="flex items-center gap-1.5 relative group">
+                  <div
+                    key={item.key}
+                    className="flex items-center gap-1.5 relative group"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     {/* Main Link - Navigates to Services Page */}
                     <a
                       href="#services"
@@ -199,6 +218,8 @@ const Header = () => {
                         className="w-64 bg-background border border-border/40 shadow-lg shadow-black/5 rounded-sm p-2 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 duration-200"
                         onCloseAutoFocus={(e) => e.preventDefault()}
                         onInteractOutside={() => setIsServicesOpen(false)}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
                       >
                         {/* Muted Label */}
                         <div className="px-4 py-3 text-[10px] font-bold text-muted-foreground/60 uppercase tracking-[0.2em] border-b border-border/40 mb-3 select-none">

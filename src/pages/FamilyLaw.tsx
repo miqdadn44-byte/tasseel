@@ -1,10 +1,12 @@
 import React from 'react';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import familyLawImage from '@/assets/services/family-law.jpg';
 
 const FamilyLaw = () => {
     return (
         <ServicePageLayout
             slug="family-law"
+            image={familyLawImage}
             title={{
                 en: 'Family Law & Personal Status Matters',
                 ar: 'قضايا الأحوال الشخصية والأسرة'

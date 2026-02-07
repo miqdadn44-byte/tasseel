@@ -1,10 +1,12 @@
 import React from 'react';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import laborLawImage from '@/assets/services/labor-law.jpg';
 
 const LaborLaw = () => {
     return (
         <ServicePageLayout
             slug="labor-law"
+            image={laborLawImage}
             title={{
                 en: 'Labor Law Representation in Kuwait',
                 ar: 'قضايا قانون العمل في دولة الكويت'

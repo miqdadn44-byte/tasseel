@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-16 text-[10px] sm:text-xs font-bold text-muted-foreground/60 uppercase tracking-[0.2em]">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 border border-primary/5 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
-              {language === 'ar' ? 'تأسست ٢٠٠٩' : 'EST. 2009'}
+              {language === 'ar' ? 'تأسست٢٠٠٤' : 'EST. 2009'}
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/50 border border-primary/5 backdrop-blur-sm">
               <Lock className="h-3 w-3" />

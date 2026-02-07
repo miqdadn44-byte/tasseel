@@ -1,10 +1,12 @@
 import React from 'react';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import criminalDefenseImage from '@/assets/services/criminal-defense.jpg';
 
 const CriminalDefense = () => {
     return (
         <ServicePageLayout
             slug="criminal-defense"
+            image={criminalDefenseImage}
             title={{
                 en: 'Criminal Defense & Legal Protection',
                 ar: 'الدفاع الجنائي والتمثيل القانوني'

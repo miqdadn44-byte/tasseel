@@ -13,6 +13,7 @@ interface ServicePageLayoutProps {
     seoTitle: { en: string; ar: string };
     seoDescription: { en: string; ar: string };
     slug: string;
+    image?: string; // Optional image path
 }
 
 const ServicePageLayout: React.FC<ServicePageLayoutProps> = ({
@@ -20,7 +21,8 @@ const ServicePageLayout: React.FC<ServicePageLayoutProps> = ({
     overview,
     handles,
     seoTitle,
-    seoDescription
+    seoDescription,
+    image
 }) => {
     const { language, t } = useLanguage();
     const isRTL = language === 'ar';
@@ -94,10 +96,20 @@ const ServicePageLayout: React.FC<ServicePageLayoutProps> = ({
                                 </div>
                                 {/* Decorative / Visual Side */}
                                 <div className={`order-1 ${isRTL ? 'md:order-1' : 'md:order-2'} flex justify-center`}>
-                                    <div className="relative w-full max-w-md aspect-[4/5] bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/10 flex items-center justify-center p-8">
-                                        <Scale className="w-32 h-32 text-primary/20" />
-                                        <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,transparent)] dark:bg-grid-slate-800/50" />
-                                    </div>
+                                    {image ? (
+                                        <div className="relative w-full max-w-md aspect-[4/5] rounded-md overflow-hidden shadow-lg border border-border/40">
+                                            <img
+                                                src={image}
+                                                alt={language === 'ar' ? title.ar : title.en}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="relative w-full max-w-md aspect-[4/5] bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/10 flex items-center justify-center p-8">
+                                            <Scale className="w-32 h-32 text-primary/20" />
+                                            <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,transparent)] dark:bg-grid-slate-800/50" />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>

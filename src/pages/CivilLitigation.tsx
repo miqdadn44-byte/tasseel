@@ -1,10 +1,12 @@
 import React from 'react';
 import ServicePageLayout from '@/components/ServicePageLayout';
+import civilLitigationImage from '@/assets/services/civil-litigation.jpg';
 
 const CivilLitigation = () => {
     return (
         <ServicePageLayout
             slug="civil-litigation"
+            image={civilLitigationImage}
             title={{
                 en: 'Civil Litigation & Dispute Resolution',
                 ar: 'القضايا المدنية وحل النزاعات'
