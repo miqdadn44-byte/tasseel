@@ -62,7 +62,7 @@ const translations = {
     'team.owner1': 'Abdullah K. Al-Foqom',
     'team.owner1.title': 'Founding Partner',
     'team.owner2': 'Mohamed  Alaazmy',
-    'team.owner2.title': 'Partner',
+    'team.owner2.title': 'Founding Partner',
     'team.partner1': 'Omar Alazmi',
     'team.partner1.title': 'Working Partner',
 
@@ -74,8 +74,8 @@ const translations = {
 
     'team.assistant1': 'Adel Nasser Bekhit Ahmed',
     'team.assistant1.title': 'Lawyer Assistant',
-    'team.assistant2': 'Hamouda Mostafa Mohamed Moustafa',
-    'team.assistant2.title': 'Lawyer Assistant',
+    'team.assistant2': 'Hani Mostafa Mohamed Moustafa',
+    'team.assistant2.title': 'Manager',
     'team.assistant3': 'Eslam Diaa Loutfi Delghani Elmowfi',
     'team.assistant3.title': 'Lawyer Assistant',
     'team.assistant4': 'Mohamed Samy Tawfik Mohamed Elsadek',
@@ -168,7 +168,7 @@ const translations = {
     'team.owner1': 'عبدالله خلف الفقم',
     'team.owner1.title': 'الشريك المؤسس',
     'team.owner2': 'محمد فلاح   العازمي',
-    'team.owner2.title': 'شريك',
+    'team.owner2.title': 'الشريك المؤسس',
     'team.partner1': 'عمر فلاح حشر الشقراء العازمي',
     'team.partner1.title': 'الشريك العامل',
 
@@ -180,8 +180,8 @@ const translations = {
 
     'team.assistant1': 'عادل ناصر بخيت أحمد',
     'team.assistant1.title': 'مساعد محامي',
-    'team.assistant2': 'حمودة مصطفى محمد مصطفى',
-    'team.assistant2.title': 'مساعد محامي',
+    'team.assistant2': 'هاني مصطفى محمد مصطفى',
+    'team.assistant2.title': 'مدير مكتب',
     'team.assistant3': 'إسلام ضياء لطفي الدلغاني الموفي',
     'team.assistant3.title': 'مساعد محامي',
     'team.assistant4': 'محمد سامي توفيق محمد الصادق',
