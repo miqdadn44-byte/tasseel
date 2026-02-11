@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FaInstagram, FaXTwitter, FaSnapchat } from 'react-icons/fa6';
+import { FaInstagram, FaXTwitter, FaSnapchat, FaTiktok } from 'react-icons/fa6';
 import abdullahImage from '@/assets/team/abdullah-k-al-foqom.jpg';
 import consultant1Image from '@/assets/team/mohammed-hassan-mohammed-atta-al-karim.jpg';
 import consultant2Image from '@/assets/team/mohamed-abdelaziz-ismail-gaballa.jpg';
@@ -25,7 +25,17 @@ const Team = () => {
     { nameKey: 'team.owner2', titleKey: 'team.owner2.title', image: mohammedImage },
   ];
 
-  const partner = { nameKey: 'team.partner1', titleKey: 'team.partner1.title', image: omarImage };
+  const partner = {
+    nameKey: 'team.partner1',
+    titleKey: 'team.partner1.title',
+    image: omarImage,
+    socials: {
+      instagram: "https://www.instagram.com/omer1_kw",
+      x: "https://x.com/omer1_kw",
+      tiktok: "https://www.tiktok.com/@omer1_kw",
+      snapchat: "https://www.snapchat.com/add/omer1_kw"
+    }
+  };
 
   const consultants = [
     { nameKey: 'team.consultant1', titleKey: 'team.consultant1.title', image: consultant1Image },
@@ -148,6 +158,37 @@ const Team = () => {
               <div className="text-center mt-6">
                 <p className="text-xl font-semibold text-primary mb-1">{t(partner.nameKey)}</p>
                 <p className="text-sm uppercase tracking-wide text-accent">{t(partner.titleKey)}</p>
+
+                {/* Social Icons for Partner */}
+                {partner.socials && (
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                    {partner.socials.instagram && (
+                      <a href={partner.socials.instagram} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                        <FaInstagram className="w-5 h-5" style={{
+                          background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                          borderRadius: '5px',
+                          padding: '2px',
+                          color: 'white'
+                        }} />
+                      </a>
+                    )}
+                    {partner.socials.x && (
+                      <a href={partner.socials.x} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                        <FaXTwitter className="w-5 h-5 text-black hover:text-gray-700" />
+                      </a>
+                    )}
+                    {partner.socials.tiktok && (
+                      <a href={partner.socials.tiktok} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                        <FaTiktok className="w-5 h-5 text-black hover:text-gray-700" />
+                      </a>
+                    )}
+                    {partner.socials.snapchat && (
+                      <a href={partner.socials.snapchat} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110">
+                        <FaSnapchat className="w-5 h-5" style={{ color: '#FFFC00', filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.3))' }} />
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
