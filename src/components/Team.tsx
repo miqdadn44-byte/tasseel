@@ -6,6 +6,7 @@ import consultant2Image from '@/assets/team/mohamed-abdelaziz-ismail-gaballa.jpg
 import assistant1Image from '@/assets/team/adel-nasser-bekhit-ahmed.jpg';
 import mohammedImage from '@/assets/team/mohamed_alaazmy.jpg';
 import omarImage from '@/assets/team/omar_alazmi.jpg';
+import mohamedSamyImage from '@/assets/team/mohamed-samy.jpg';
 
 const Team = () => {
   const { t } = useLanguage();
@@ -36,7 +37,7 @@ const Team = () => {
     { nameKey: 'team.assistant1', titleKey: 'team.assistant1.title', image: assistant1Image },
     { nameKey: 'team.assistant2', titleKey: 'team.assistant2.title', image: null },
     { nameKey: 'team.assistant3', titleKey: 'team.assistant3.title', image: null },
-    { nameKey: 'team.assistant4', titleKey: 'team.assistant4.title', image: null },
+    { nameKey: 'team.assistant4', titleKey: 'team.assistant4.title', image: mohamedSamyImage },
     { nameKey: 'team.assistant5', titleKey: 'team.assistant5.title', image: null },
     { nameKey: 'team.assistant', titleKey: 'team.assistant', image: null },
   ];
