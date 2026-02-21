@@ -57,6 +57,7 @@ const translations = {
     'team.owners': 'Firm Owners',
     'team.partner': 'Working Partner',
     'team.consultants': 'Legal Consultants',
+    'team.management': 'Manager',
     'team.assistants': 'Lawyer Assistants',
 
     'team.owner1': 'Abdullah K. Al-Foqom',
@@ -163,6 +164,7 @@ const translations = {
     'team.owners': 'ملاك المكتب',
     'team.partner': 'الشريك العامل',
     'team.consultants': 'المستشارون القانونيون',
+    'team.management': 'المدير',
     'team.assistants': 'مساعدو المحامين',
 
     'team.owner1': 'عبدالله خلف الفقم',

@@ -43,9 +43,12 @@ const Team = () => {
     { nameKey: 'team.consultant', titleKey: 'team.consultant', image: null },
   ];
 
+  const managers = [
+    { nameKey: 'team.assistant2', titleKey: 'team.assistant2.title', image: null },
+  ];
+
   const assistants = [
     { nameKey: 'team.assistant1', titleKey: 'team.assistant1.title', image: assistant1Image },
-    { nameKey: 'team.assistant2', titleKey: 'team.assistant2.title', image: null },
     { nameKey: 'team.assistant3', titleKey: 'team.assistant3.title', image: null },
     { nameKey: 'team.assistant4', titleKey: 'team.assistant4.title', image: mohamedSamyImage },
     { nameKey: 'team.assistant5', titleKey: 'team.assistant5.title', image: null },
@@ -219,6 +222,36 @@ const Team = () => {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Management - New Section */}
+            <div className="mb-24">
+              <h3 className="text-[10px] font-bold text-muted-foreground/40 uppercase tracking-[0.2em] text-center mb-10">
+                {t('team.management')}
+              </h3>
+              <div className="grid grid-cols-1 sm:max-w-xs mx-auto gap-4">
+                {managers.map((manager, index) => {
+                  return (
+                    <div key={index} className="py-4 px-3 rounded-sm text-center flex flex-col items-center justify-center bg-background/40 hover:bg-background border border-transparent hover:border-border/30 transition-all duration-300">
+                      {manager.image && (
+                        <div className="mb-3 w-20 h-20 rounded-full overflow-hidden border border-border/60 shadow-sm">
+                          <img
+                            src={manager.image}
+                            alt={t(manager.nameKey)}
+                            className="w-full h-full object-cover transition-all duration-500 hover:scale-110"
+                          />
+                        </div>
+                      )}
+                      <p className="text-sm font-semibold text-primary/80 mb-1 tracking-tight">
+                        {t(manager.nameKey)}
+                      </p>
+                      <p className="text-[9px] text-muted-foreground uppercase tracking-wider opacity-60">
+                        {t(manager.titleKey)}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
