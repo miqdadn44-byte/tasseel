@@ -31,6 +31,12 @@ const translations = {
     'hero.trust': 'Serving clients across Kuwait with professionalism since 2004',
     'hero.confidential': 'Confidential consultation available',
 
+    // Metrics
+    'metrics.cases.label': 'Cases Handled',
+    'metrics.experience.label': 'Years of Legal Experience',
+    'metrics.clients.label': 'Clients Represented',
+    'metrics.practice.label': 'Areas of Practice',
+
     // About
     'about.title': 'About',
     'about.description': 'Tasseel Law Firm was established in 2004 with a commitment to upholding the principles of justice and providing sound legal representation. With over two decades of experience, we serve clients across Kuwait with professionalism and dedication.',
@@ -62,6 +68,13 @@ const translations = {
 
     'team.owner1': 'Abdullah K. Al-Foqom',
     'team.owner1.title': 'Founding Partner',
+    'team.owner1.qualifications.title': 'Education',
+    'team.owner1.qualifications.1': '• Bachelor of Law (LL.B.) — Kuwait University',
+    'team.owner1.qualifications.2': '• Master of Comparative Laws (MCL) — International Islamic University Malaysia',
+    'team.owner1.qualifications.3': '• PhD Researcher in Shariah Law — University of Malaya',
+    'team.owner1.roles.title': 'Professional Affiliations',
+    'team.owner1.roles.1': '• Member of the Training Authority — Kuwait Institute for Advocacy and Legal Studies',
+    'team.owner1.roles.2': '• Certified Trainer — Kuwait Lawyers Association',
     'team.owner2': 'Mohamed  Alaazmy',
     'team.owner2.title': 'Founding Partner',
     'team.partner1': 'Omar Alazmi',
@@ -138,6 +151,12 @@ const translations = {
     'hero.trust': 'نخدم عملاءنا في مختلف أنحاء دولة الكويت منذ عام ٢٠٠٤',
     'hero.confidential': 'استشارة قانونية بسرية تامة',
 
+    // Metrics
+    'metrics.cases.label': 'قضية تم التعامل معها',
+    'metrics.experience.label': 'سنة من الخبرة القانونية',
+    'metrics.clients.label': 'عميل تم تمثيلهم',
+    'metrics.practice.label': 'مجالات قانونية',
+
     // About
     'about.title': 'عن المكتب',
     'about.description': 'تأسس مكتب تأصيل للمحاماة عام ٢٠٠٤ بالتزام راسخ بمبادئ العدالة وتقديم التمثيل القانوني السليم. بخبرة تتجاوز عقدين من الزمن، نخدم موكلينا في جميع أنحاء الكويت بمهنية وتفانٍ.',
@@ -167,8 +186,15 @@ const translations = {
     'team.management': 'المدير',
     'team.assistants': 'مساعدو المحامين',
 
-    'team.owner1': 'عبدالله خلف الفقم',
+    'team.owner1': 'عبدالله خ. الفقوم',
     'team.owner1.title': 'الشريك المؤسس',
+    'team.owner1.qualifications.title': 'المؤهلات العلمية',
+    'team.owner1.qualifications.1': '• ليسانس حقوق — جامعة الكويت',
+    'team.owner1.qualifications.2': '• ماجستير القانون المقارن — الجامعة الإسلامية العالمية بماليزيا',
+    'team.owner1.qualifications.3': '• باحث دكتوراه في الشريعة — جامعة مالايا',
+    'team.owner1.roles.title': 'العضويات المهنية',
+    'team.owner1.roles.1': '• عضو هيئة التدريب — معهد الكويت للمحاماة والدراسات القانونية',
+    'team.owner1.roles.2': '• مدرب معتمد — جمعية المحامين الكويتية',
     'team.owner2': 'محمد فلاح   العازمي',
     'team.owner2.title': 'الشريك المؤسس',
     'team.partner1': 'عمر فلاح حشر الشقراء العازمي',
@@ -184,7 +210,7 @@ const translations = {
     'team.assistant1.title': 'مساعد محامي',
     'team.assistant2': 'هاني مصطفىى',
     'team.assistant2.title': 'مدير مكتب',
-    'team.assistant3': 'إسلام ضياي',
+    'team.assistant3': 'اسلام ضياء',
     'team.assistant3.title': 'مساعد محامي',
     'team.assistant4': 'محمد سامي ',
     'team.assistant4.title': 'مساعد محامي',

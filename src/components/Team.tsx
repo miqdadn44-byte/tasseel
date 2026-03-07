@@ -20,6 +20,21 @@ const Team = () => {
         instagram: "https://www.instagram.com/abdullah_alfoqom?utm_source=qr&igsh=MXFkMm1ua25pNTdjOQ==",
         x: "https://x.com/lawyer_al_azemi",
         snapchat: "https://www.snapchat.com/add/just-ready?share_id=ALg_Lv2jz2o&locale=en-US"
+      },
+      qualifications: {
+        titleKey: 'team.owner1.qualifications.title',
+        items: [
+          'team.owner1.qualifications.1',
+          'team.owner1.qualifications.2',
+          'team.owner1.qualifications.3'
+        ]
+      },
+      roles: {
+        titleKey: 'team.owner1.roles.title',
+        items: [
+          'team.owner1.roles.1',
+          'team.owner1.roles.2'
+        ]
       }
     },
     { nameKey: 'team.owner2', titleKey: 'team.owner2.title', image: mohammedImage },
@@ -103,6 +118,32 @@ const Team = () => {
                   <div className="text-center mt-6">
                     <p className="text-xl font-semibold text-primary mb-1">{t(owner.nameKey)}</p>
                     <p className="text-sm uppercase tracking-wide text-accent">{t(owner.titleKey)}</p>
+
+                    {/* Qualifications & Roles */}
+                    {('qualifications' in owner || 'roles' in owner) && (
+                      <div className="mt-6 text-start max-w-[320px] mx-auto flex flex-col gap-4 border-t border-border/40 pt-5">
+                        {'qualifications' in owner && owner.qualifications && (
+                          <div>
+                            <p className="text-[11px] font-bold text-primary/80 uppercase tracking-widest mb-2 opacity-90">{t(owner.qualifications.titleKey)}</p>
+                            <ul className="text-[12px] text-muted-foreground space-y-1.5 list-none m-0 p-0 text-start">
+                              {(owner.qualifications.items as string[]).map((item, idx) => (
+                                <li key={idx} className="leading-relaxed">{t(item)}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {'roles' in owner && owner.roles && (
+                          <div>
+                            <p className="text-[11px] font-bold text-primary/80 uppercase tracking-widest mb-2 opacity-90 mt-2">{t(owner.roles.titleKey)}</p>
+                            <ul className="text-[12px] text-muted-foreground space-y-1.5 list-none m-0 p-0 text-start">
+                              {(owner.roles.items as string[]).map((item, idx) => (
+                                <li key={idx} className="leading-relaxed">{t(item)}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
 
                     {/* Social Icons for Owners */}
                     {owner.socials && (
