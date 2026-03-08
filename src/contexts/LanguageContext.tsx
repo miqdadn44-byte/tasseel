@@ -186,7 +186,7 @@ const translations = {
     'team.management': 'المدير',
     'team.assistants': 'مساعدو المحامين',
 
-    'team.owner1': 'عبدالله خ. الفقوم',
+    'team.owner1': 'عبدالله خ. الفقم',
     'team.owner1.title': 'الشريك المؤسس',
     'team.owner1.qualifications.title': 'المؤهلات العلمية',
     'team.owner1.qualifications.1': '• ليسانس حقوق — جامعة الكويت',
