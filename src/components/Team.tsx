@@ -33,7 +33,8 @@ const Team = () => {
         titleKey: 'team.owner1.roles.title',
         items: [
           'team.owner1.roles.1',
-          'team.owner1.roles.2'
+          'team.owner1.roles.2',
+          'team.owner1.roles.3'
         ]
       }
     },
@@ -184,14 +185,14 @@ const Team = () => {
               </h3>
             </div>
             <div className="max-w-xs mx-auto group relative flex flex-col items-center">
-              <div className="overflow-hidden rounded-md aspect-[4/5] w-full max-w-[260px] bg-background shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative">
+              <div className="overflow-hidden rounded-md w-full max-w-[260px] bg-background shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative">
                 <div className="absolute inset-3 border border-primary/5 z-20 pointer-events-none"></div>
 
                 {partner.image ? (
                   <img
                     src={partner.image}
                     alt={t(partner.nameKey)}
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto"
                   />
                 ) : (
                   <div className="w-full h-full bg-secondary/40 flex items-center justify-center relative">
