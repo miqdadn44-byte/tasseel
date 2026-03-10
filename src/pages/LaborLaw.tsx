@@ -13,7 +13,7 @@ const LaborLaw = () => {
             }}
             overview={{
                 en: 'Tasseel Law Firm provides professional legal representation in labor and employment matters, protecting the rights of both employees and employers in accordance with Kuwaiti labor law.',
-                ar: 'يقدم مكتب تاصيل للمحاماة خدمات قانونية متخصصة في قضايا العمل، مع الالتزام الكامل بقانون العمل الكويتي وحماية حقوق العمال وأصحاب العمل.'
+                ar: 'يقدم مجموعة تاصيل للمحاماة خدمات قانونية متخصصة في قضايا العمل، مع الالتزام الكامل بقانون العمل الكويتي وحماية حقوق العمال وأصحاب العمل.'
             }}
             handles={{
                 en: [
@@ -33,7 +33,7 @@ const LaborLaw = () => {
             }}
             seoTitle={{
                 en: 'Labor Law & Employment Lawyers | Tasseel Law Firm',
-                ar: 'محامي قضايا عمالية وقانون العمل | مكتب تاصيل للمحاماة'
+                ar: 'محامي قضايا عمالية وقانون العمل | مجموعة تاصيل للمحاماة'
             }}
             seoDescription={{
                 en: 'Expert labor law representation in Kuwait for employees and employers. Handling contract disputes, termination, and benefits claims.',

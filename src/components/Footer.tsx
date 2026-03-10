@@ -124,7 +124,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="pt-8 border-t border-primary-foreground/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-primary-foreground/30 uppercase tracking-widest">
           <p>
-            © {currentYear} {language === 'ar' ? 'مكتب تأصيل للمحاماة' : 'Tasseel Law Firm'}.
+            © {currentYear} {language === 'ar' ? 'مجموعة تأصيل للمحاماة' : 'Tasseel Law Firm'}.
           </p>
           <p className="opacity-70">
             {t('footer.rights')}

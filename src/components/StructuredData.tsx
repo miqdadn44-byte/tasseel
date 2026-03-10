@@ -7,13 +7,13 @@ const StructuredData = () => {
         '@context': 'https://schema.org',
         '@type': 'LegalService',
         '@id': 'https://tasseellaw.com/#organization',
-        name: language === 'ar' ? 'مكتب تأصيل للمحاماة' : 'Tasseel Law Firm',
-        alternateName: language === 'ar' ? 'Tasseel Law Firm' : 'مكتب تأصيل للمحاماة',
+        name: language === 'ar' ? 'مجموعة تأصيل للمحاماة' : 'Tasseel Law Firm',
+        alternateName: language === 'ar' ? 'Tasseel Law Firm' : 'مجموعة تأصيل للمحاماة',
         url: 'https://tasseellaw.com',
         logo: 'https://tasseellaw.com/logo.png',
         image: 'https://tasseellaw.com/og-image.jpg',
         description: language === 'ar'
-            ? 'مكتب تأصيل للمحاماة في الكويت، تأسس عام 2004، ويقدم خدمات قانونية متخصصة.'
+            ? 'مجموعة تأصيل للمحاماة في الكويت، تأسس عام 2004، ويقدم خدمات قانونية متخصصة.'
             : 'Tasseel Law Firm is a professional law firm in Kuwait established in 2004.',
         foundingDate: '2004',
         telephone: '+96599553299',
