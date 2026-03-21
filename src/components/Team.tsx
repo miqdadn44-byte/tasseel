@@ -34,7 +34,8 @@ const Team = () => {
         items: [
           'team.owner1.roles.1',
           'team.owner1.roles.2',
-          'team.owner1.roles.3'
+          'team.owner1.roles.3',
+          'team.owner1.roles.4'
         ]
       }
     },
@@ -122,23 +123,40 @@ const Team = () => {
 
                     {/* Qualifications & Roles */}
                     {('qualifications' in owner || 'roles' in owner) && (
-                      <div className="mt-6 text-start max-w-[320px] mx-auto flex flex-col gap-4 border-t border-border/40 pt-5">
+                      <div className="mt-6 max-w-[320px] mx-auto flex flex-col gap-0 border-t border-border/40 pt-5">
                         {'qualifications' in owner && owner.qualifications && (
                           <div>
-                            <p className="text-[11px] font-bold text-primary/80 uppercase tracking-widest mb-2 opacity-90">{t(owner.qualifications.titleKey)}</p>
-                            <ul className="text-[12px] text-muted-foreground space-y-1.5 list-none m-0 p-0 text-start">
+                            <p className="text-[10px] font-bold text-primary/60 uppercase tracking-[0.18em] mb-2.5">
+                              {t(owner.qualifications.titleKey)}
+                            </p>
+                            <ul className="text-[12px] text-muted-foreground list-none m-0 p-0 space-y-2">
                               {(owner.qualifications.items as string[]).map((item, idx) => (
-                                <li key={idx} className="leading-relaxed">{t(item)}</li>
+                                <li key={idx} className="flex gap-2 leading-[1.65] text-start">
+                                  <span className="mt-[5px] w-1 h-1 rounded-full bg-primary/25 flex-shrink-0"></span>
+                                  <span>{t(item)}</span>
+                                </li>
                               ))}
                             </ul>
                           </div>
                         )}
                         {'roles' in owner && owner.roles && (
-                          <div>
-                            <p className="text-[11px] font-bold text-primary/80 uppercase tracking-widest mb-2 opacity-90 mt-2">{t(owner.roles.titleKey)}</p>
-                            <ul className="text-[12px] text-muted-foreground space-y-1.5 list-none m-0 p-0 text-start">
+                          <div className="mt-4 pt-4 border-t border-border/25">
+                            <p className="text-[10px] font-bold text-primary/60 uppercase tracking-[0.18em] mb-2.5">
+                              {t(owner.roles.titleKey)}
+                            </p>
+                            <ul className="text-[12px] text-muted-foreground list-none m-0 p-0 space-y-2">
                               {(owner.roles.items as string[]).map((item, idx) => (
-                                <li key={idx} className="leading-relaxed">{t(item)}</li>
+                                <li
+                                  key={idx}
+                                  className={`flex gap-2 leading-[1.65] text-start${
+                                    idx === 0 ? ' font-semibold' : ''
+                                  }`}
+                                >
+                                  <span className={`mt-[5px] w-1 h-1 rounded-full flex-shrink-0${
+                                    idx === 0 ? ' bg-primary/50' : ' bg-primary/20'
+                                  }`}></span>
+                                  <span>{t(item)}</span>
+                                </li>
                               ))}
                             </ul>
                           </div>
